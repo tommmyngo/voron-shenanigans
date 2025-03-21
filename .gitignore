@@ -4,3 +4,9 @@
 # But not these files...
 !.gitignore
 !README.md
+!fans.cfg
+!leds.cfg
+!macros.cfg
+!misc.cfg
+!motors.cfg
+!printer.cfg
