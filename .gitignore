@@ -12,4 +12,4 @@
 !printer.cfg
 !moonraker.cfg
 !KlipperScreen.conf
-!ShakeTune_results/*
+!ShakeTune_results/**
