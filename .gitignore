@@ -5,11 +5,13 @@
 !.gitignore
 !README.md
 !fans.cfg
+!bedfans.cfg
 !leds.cfg
 !macros.cfg
 !misc.cfg
 !motors.cfg
 !printer.cfg
 !moonraker.cfg
+!moonraker.conf
 !KlipperScreen.conf
 !ShakeTune_results/**
