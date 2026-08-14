@@ -1,0 +1,24 @@
+#!/bin/sh
+# Reset the known USB CAN bridge before Klipper reconnects to CAN MCUs.
+set -eu
+
+usb_device=/sys/bus/usb/devices/2-1.4
+interface=can0
+
+if [ -e "$usb_device/authorized" ]; then
+    printf '0' > "$usb_device/authorized"
+    sleep 1
+    printf '1' > "$usb_device/authorized"
+fi
+
+attempt=0
+while [ "$attempt" -lt 15 ]; do
+    if /usr/sbin/ip link show dev "$interface" >/dev/null 2>&1; then
+        /usr/sbin/ip link set "$interface" up type can bitrate 1000000 && exit 0
+    fi
+    attempt=$((attempt + 1))
+    sleep 1
+done
+
+echo "CAN interface $interface did not return after USB bridge reset" >&2
+exit 1

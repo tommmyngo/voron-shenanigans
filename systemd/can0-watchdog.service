@@ -1,0 +1,14 @@
+[Unit]
+Description=Restore CAN interface after Klipper MCU resets
+Wants=can0.service
+After=can0.service
+PartOf=klipper.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/can0-watchdog
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=klipper.service

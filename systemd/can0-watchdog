@@ -1,0 +1,12 @@
+#!/bin/sh
+# Restore the USB-CAN network link if a Klipper MCU restart leaves it down.
+set -eu
+
+interface=can0
+
+while :; do
+    if ! /usr/sbin/ip -o link show dev "$interface" 2>/dev/null | /bin/grep -q '<[^>]*UP'; then
+        /usr/sbin/ip link set "$interface" up type can bitrate 1000000 || true
+    fi
+    sleep 1
+done

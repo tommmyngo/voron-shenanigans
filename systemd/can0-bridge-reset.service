@@ -1,0 +1,10 @@
+[Unit]
+Description=Reset USB CAN bridge before Klipper starts
+After=can0.service
+Before=klipper.service
+PartOf=klipper.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/can0-bridge-reset
+RemainAfterExit=yes
