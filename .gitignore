@@ -16,3 +16,6 @@
 !moonraker.conf
 !KlipperScreen.conf
 !ShakeTune_results/**
+!homing.cfg
+!systemd/
+!systemd/**
